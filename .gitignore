@@ -46,3 +46,5 @@ node_modules/
 server/node_modules/
 client/node_modules/
 server/uploads/
+.next/
+client/.next/
