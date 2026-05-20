@@ -26,9 +26,11 @@
     "@langchain/textsplitters": "^1.0.1",
     "bullmq": "^5.76.8",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "~4.22.2",
     "langchain": "^1.4.0",
     "multer": "^2.1.1",
+    "openai": "^6.38.0",
     "pdf-parse": "^2.4.5"
   },
   "devDependencies": {

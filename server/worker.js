@@ -1,5 +1,5 @@
 import { Worker } from "bullmq";
-import {OpenAIEmbeddings } from "@langchain/OpenAi"
+import {OpenAIEmbeddings } from "@langchain/openai"
 import {QdrantVectorStore} from "@langchain/qdrant"
 import {Document} from "@langchain/core/documents"
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf"
@@ -19,9 +19,21 @@ const worker= new Worker('file-upload-queue', async (job) =>{
     // load the pdf     
     const loader = new PDFLoader(data.path)
     const docs = await loader.load()
+    //chunkin
     const splitter = new RecursiveCharacterTextSplitter({ chunkSize: 300, chunkOverlap: 0 })
     const texts = await splitter.splitDocuments(docs)
-    console.log(texts)
+    // console.log(texts)
+    const embeddings = new OpenAIEmbeddings({
+        model: "text-embedding-3-small",
+        apiKey: process.env.OPEN_API_KEY
+    });
+    const vectorStore = await QdrantVectorStore.fromExistingCollection(embeddings, {
+        url: process.env.QDRANT_URL,
+        collectionName: "langchainjs-testing",
+    });
+    await vectorStore.addDocuments(docs)
+    
+
 
     },
     {

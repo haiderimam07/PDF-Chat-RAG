@@ -48,3 +48,4 @@ client/node_modules/
 server/uploads/
 .next/
 client/.next/
+.env
