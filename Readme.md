@@ -13,6 +13,9 @@ Scalable Architecture: Designed for modularity and performance in handling docum
 
 ## 📁 Folder Structure
 This repository contains two main directories:
+## 📂 Folder Structure
+
+```text
 pdf-chat-rag/
 ├── client/                     # Frontend Application (Next.js)
 │   ├── app/                    # Next.js App Router core configuration
