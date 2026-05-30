@@ -13,7 +13,6 @@ Scalable Architecture: Designed for modularity and performance in handling docum
 
 ## 📁 Folder Structure
 This repository contains two main directories:
-## 📂 Folder Structure
 
 ```text
 pdf-chat-rag/
