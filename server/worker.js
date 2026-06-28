@@ -19,7 +19,7 @@ const worker= new Worker('file-upload-queue', async (job) =>{
     // load the pdf     
     const loader = new PDFLoader(data.path)
     const docs = await loader.load()
-    //chunkin
+    //chunking
     const splitter = new RecursiveCharacterTextSplitter({ chunkSize: 300, chunkOverlap: 0 })
     const texts = await splitter.splitDocuments(docs)
     // console.log(texts)
@@ -31,7 +31,7 @@ const worker= new Worker('file-upload-queue', async (job) =>{
         url: process.env.QDRANT_URL,
         collectionName: "langchainjs-testing",
     });
-    await vectorStore.addDocuments(docs)
+    await vectorStore.addDocuments(texts)
     
 
 
